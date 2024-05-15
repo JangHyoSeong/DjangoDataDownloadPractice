@@ -11,5 +11,13 @@
   <form action="{% url "movies:movie_list" %}">
     <input type="submit" value="받아오기">
   </form>
+
+  {% for movie in movies %}
+  <p>제목 : {{movie.title}}</p>
+    {% if movie.poster %}
+      <p>{{ movie.poster.url }}</p>
+      <img src="{{ movie.poster.url }}" alt="poster">
+    {% endif %}
+  {% endfor %}
 </body>
 </html>
