@@ -30,7 +30,7 @@ def download_movie_list(request):
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
     
-    for i in range(40, 50):
+    for i in range(50, 53):
         print(i)
         MV_params = {
             'key': MV_API_KEY,
@@ -69,6 +69,7 @@ def download_movie_list(request):
             
             overview = TMDB.get('overview')
             poster = TMDB.get('poster_path')
+            popularity = TMDB.get('popularity')
             try:
                 opening_date = datetime.strptime(movie_data.get('openDt'), '%Y%m%d').date()
             except:
@@ -78,7 +79,7 @@ def download_movie_list(request):
             if running_time == '':
                 running_time = None
             
-            movie = Movie(movie_id=movie_code, title=title, overview=overview, opening_date=opening_date, running_time=running_time)
+            movie = Movie(movie_id=movie_code, title=title, overview=overview, opening_date=opening_date, running_time=running_time, popularity=popularity)
             movie.save()
             
             if poster == '':

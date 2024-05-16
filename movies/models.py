@@ -8,6 +8,7 @@ class Movie(models.Model):
     poster = models.ImageField(blank=True, upload_to='poster/')
     opening_date = models.DateField(null=True)
     running_time = models.IntegerField(null=True)
+    popularity = models.FloatField()
     producer = models.ManyToManyField("Producer", verbose_name="producer_movie")
     actor = models.ManyToManyField("Actor", verbose_name="actor_movie")
     genre = models.ManyToManyField("Genre", verbose_name="genre_movie")
